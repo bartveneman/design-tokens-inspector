@@ -18,7 +18,11 @@ export function run(_args: string[] = []): void {
 
   const result: string[][] = [];
   walkTokens(raw_tokens, (token, path) => {
-    if (isRef(token.$value) && token.$value === `{${token_path}}`) {
+    if (
+      isRef(token.$value) &&
+      (token.$value === `{${token_path}}` ||
+        token.$value.startsWith(`{${token_path}`))
+    ) {
       result.push(path);
     }
   });
