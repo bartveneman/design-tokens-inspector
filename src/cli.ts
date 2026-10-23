@@ -3,11 +3,13 @@ import { parseArgs } from "node:util";
 import { run as usage } from "./commands/usage.ts";
 import { run as tokenUsage } from "./commands/token-usage.ts";
 import { run as find } from "./commands/find.ts";
+import { run as lsTypes } from "./commands/ls-types.ts";
 
 const commands = {
   usage,
   "token-usage": tokenUsage,
   find,
+  "ls-types": lsTypes,
 };
 
 function main(): void {
