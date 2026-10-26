@@ -21,6 +21,7 @@ function main(): void {
     strict: false,
     options: {
       recursive: { type: "boolean", short: "r" },
+      md: { type: "boolean" },
     },
   });
 
@@ -28,6 +29,10 @@ function main(): void {
 
   if (values.recursive) {
     rest.push("-r");
+  }
+
+  if (values.md) {
+    rest.push("--md");
   }
 
   if (!command) {
