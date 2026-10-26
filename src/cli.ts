@@ -4,12 +4,14 @@ import { run as usage } from "./commands/usage.ts";
 import { run as tokenUsage } from "./commands/token-usage.ts";
 import { run as find } from "./commands/find.ts";
 import { run as lsTypes } from "./commands/ls-types.ts";
+import { run as lsTodos } from "./commands/ls-todos.ts";
 
 const commands = {
   usage,
   "token-usage": tokenUsage,
   find,
   "ls-types": lsTypes,
+  "ls-todos": lsTodos,
 };
 
 function main(): void {
