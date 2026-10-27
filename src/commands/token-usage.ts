@@ -16,8 +16,13 @@ export function run(_args: string[] = []): void {
   const tokens_str = readFileSync(path_to_tokens, "utf-8");
   const raw_tokens = JSON.parse(tokens_str);
 
+  let token_exists = false;
   const result: string[][] = [];
   walkTokens(raw_tokens, (token, path) => {
+    if (token_path === path.slice(1).join(".")) {
+      token_exists = true;
+    }
+
     if (
       isRef(token.$value) &&
       (token.$value === `{${token_path}}` ||
@@ -26,6 +31,12 @@ export function run(_args: string[] = []): void {
       result.push(path);
     }
   });
+
+  if (!token_exists) {
+    console.error(`Token not found: ${token_path}`);
+    process.exitCode = 1;
+    return;
+  }
 
   console.log(`Found ${result.length} references to ${token_path}:`);
   for (const ref of result) {
