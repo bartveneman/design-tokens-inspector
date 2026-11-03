@@ -5,6 +5,7 @@ import { run as tokenUsage } from "./commands/token-usage.ts";
 import { run as find } from "./commands/find.ts";
 import { run as lsTypes } from "./commands/ls-types.ts";
 import { run as lsTodos } from "./commands/ls-todos.ts";
+import { run as lsTokens } from "./commands/ls-tokens.ts";
 
 const commands = {
   usage,
@@ -12,6 +13,7 @@ const commands = {
   find,
   "ls-types": lsTypes,
   "ls-todos": lsTodos,
+  "ls-tokens": lsTokens,
 };
 
 function main(): void {
