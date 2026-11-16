@@ -29,7 +29,7 @@ export function run(_args: string[] = []): void {
   console.log(`Found ${result.length} ${token_type} tokens:`);
   console.table(
     result.map((i) => ({
-      path: i.path.slice(1).join("."),
+      path: i.path.join("."),
       value: i.token.$value,
     })),
   );

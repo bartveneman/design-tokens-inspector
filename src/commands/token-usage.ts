@@ -19,7 +19,7 @@ export function run(_args: string[] = []): void {
   let token_exists = false;
   const result: string[][] = [];
   walkTokens(raw_tokens, (token, path) => {
-    if (token_path === path.slice(1).join(".")) {
+    if (token_path === path.join(".")) {
       token_exists = true;
     }
 

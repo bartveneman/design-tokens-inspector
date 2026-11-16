@@ -7,6 +7,7 @@ import { run as lsTypes } from "./commands/ls-types.ts";
 import { run as lsTodos } from "./commands/ls-todos.ts";
 import { run as lsTokens } from "./commands/ls-tokens.ts";
 import { run as lsDeprecations } from "./commands/ls-deprecations.ts";
+import { run as lsHardcoded } from "./commands/ls-hardcoded.ts";
 
 const commands = {
   usage,
@@ -16,6 +17,7 @@ const commands = {
   "ls-todos": lsTodos,
   "ls-tokens": lsTokens,
   "ls-deprecations": lsDeprecations,
+  "ls-hardcoded": lsHardcoded,
 };
 
 function main(): void {
@@ -26,6 +28,7 @@ function main(): void {
     options: {
       recursive: { type: "boolean", short: "r" },
       md: { type: "boolean" },
+      skip: { type: "string", multiple: true },
     },
   });
 
@@ -37,6 +40,12 @@ function main(): void {
 
   if (values.md) {
     rest.push("--md");
+  }
+
+  if (Array.isArray(values.skip)) {
+    for (const pattern of values.skip) {
+      rest.push(`--skip=${pattern}`);
+    }
   }
 
   if (!command) {

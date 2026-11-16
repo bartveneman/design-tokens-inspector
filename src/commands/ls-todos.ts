@@ -27,7 +27,7 @@ export function run(_args: string[] = []): void {
       token.$description.toLowerCase().startsWith("todo")
     ) {
       result.push({
-        path: path.slice(1).join("."),
+        path: path.join("."),
         value: token.$value,
         description: stripTodoPrefix(token.$description),
       });

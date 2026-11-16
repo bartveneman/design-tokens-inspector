@@ -22,7 +22,7 @@ export function run(_args: string[] = []): void {
     if (deprecated === undefined || deprecated === false) return;
 
     result.push({
-      path: path.slice(1).join("."),
+      path: path.join("."),
       message: typeof deprecated === "string" ? deprecated : "",
     });
   });

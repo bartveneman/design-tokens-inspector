@@ -16,7 +16,7 @@ export function run(_args: string[] = []): void {
   const raw_tokens = JSON.parse(tokens_str);
 
   walkTokens(raw_tokens, (token, path) => {
-    if (token_path === path.slice(1).join(".")) {
+    if (token_path === path.join(".")) {
       console.log(token);
 
       if (is_recursive) {
